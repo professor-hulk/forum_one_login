@@ -1,0 +1,6 @@
+forum_one_login.admin_config:
+  title: 'Configure Forum One Login Settings'
+  description: 'Configure Forum One Login Settings'
+  route_name: forum_one_login.settings_form
+  parent: 'system.admin_config'
+  menu_name: forum_one_login

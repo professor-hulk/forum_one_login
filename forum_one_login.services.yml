@@ -1,0 +1,8 @@
+services:
+  forum_one_user_login:
+    class: '\Drupal\forum_one_login\EventSubscriber\LoginSubscriber'
+    arguments:
+      - '@database'
+      - '@date.formatter'
+    tags:
+      - { name: 'event_subscriber' }

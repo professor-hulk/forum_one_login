@@ -1,0 +1,7 @@
+forum_one_login.settings_form:
+  path: '/admin/forum_one_login_settings'
+  defaults:
+    _form: '\Drupal\forum_one_login\Form\ForumOneConfigForm'
+    _title: 'Forum One Login Settings'
+  requirements:
+    _access: 'TRUE'

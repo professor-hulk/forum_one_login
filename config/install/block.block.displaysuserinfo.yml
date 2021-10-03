@@ -1,0 +1,26 @@
+uuid: 7e2ed96e-0108-4311-92f9-7e4d1d446be3
+langcode: en
+status: true
+dependencies:
+  module:
+    - forum_one_login
+    - system
+  theme:
+    - bartik
+id: displaysuserinfo
+theme: bartik
+region: sidebar_second
+weight: 0
+provider: null
+plugin: forum_one_login
+settings:
+  id: forum_one_login
+  label: 'Displays user info'
+  provider: forum_one_login
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

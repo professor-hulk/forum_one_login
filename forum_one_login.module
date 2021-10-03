@@ -1,0 +1,34 @@
+<?php
+
+use Drupal\forum_one_login\Event\LoginEvent;
+
+
+/**
+ * This will attach the event dispatcher
+ */
+function login_function(&$form, $form_state) {
+
+  $name = $form_state->getValue('name');
+
+  if(!empty($name)) {
+    $account = user_load_by_name($name);
+  }
+
+  // Instantiate the module's login event.
+  $event = new LoginEvent($account);
+
+  // Get the event_dispatcher service and dispatch the event.
+  /** @var \Symfony\Component\EventDispatcher\EventDispatcherInterface $event_dispatcher */
+  $event_dispatcher = \Drupal::service('event_dispatcher');
+  $event_dispatcher->dispatch(LoginEvent::EVENT_NAME, $event);
+
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function forum_one_login_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'user_login' || $form_id == 'user_login_block' || $form_id == 'user_login_form') {
+    array_unshift($form['#validate'], 'login_function');
+  }
+}
